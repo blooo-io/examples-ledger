@@ -35,7 +35,7 @@ class DeviceSelectionScreen extends Component {
       );
     }
     let previousAvailable = false;
-    Observable.create(TransportBLE.observeState).subscribe(e => {
+    new Observable(TransportBLE.observeState).subscribe(e => {
       if (e.available !== previousAvailable) {
         previousAvailable = e.available;
         if (e.available) {
@@ -53,7 +53,7 @@ class DeviceSelectionScreen extends Component {
 
   startScan = async () => {
     this.setState({ refreshing: true });
-    this.sub = Observable.create(TransportBLE.listen).subscribe({
+    this.sub = new Observable(TransportBLE.listen).subscribe({
       complete: () => {
         this.setState({ refreshing: false });
       },

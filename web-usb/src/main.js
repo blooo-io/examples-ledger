@@ -25,7 +25,7 @@ document.body.addEventListener("click", async () => {
     h2.textContent = bitcoinAddress;
     $main.innerHTML = "<h1>Your first Bitcoin address:</h1>";
     $main.appendChild(h2);
-    await appBtc.getWalletPublicKey("44'/0'/0'/0/0", true);
+    await appBtc.getWalletPublicKey({format:"44'/0'/0'/0/0", verify: true});
   } catch (e) {
     const $err = document.createElement("code");
     $err.style.color = "#f66";
