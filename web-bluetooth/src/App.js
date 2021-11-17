@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import eip55 from "eip55";
 import TransportWebBLE from "@ledgerhq/hw-transport-web-ble";
-import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
 import AppEth from "@ledgerhq/hw-app-eth";
 import QRCode from "./QRCode";
 import "./App.css";
