@@ -17,11 +17,6 @@ class DeviceSelectionScreen extends Component {
     this.props.onSelectDevice(transport);
   };
 
-  createUSB = async () => {
-    const transport = await TransportWebUSB.create();
-    this.props.onSelectDevice(transport);
-  };
-
   render() {
     return (
       <div className="DeviceSelectionScreen">
@@ -29,7 +24,6 @@ class DeviceSelectionScreen extends Component {
           Power up your Ledger Nano X and enter your pin before continuing...
         </p>
         <button onClick={this.createBLE}>Connect with Bluetooth</button>
-        <button onClick={this.createUSB}>Connect with USB</button>
       </div>
     );
   }
