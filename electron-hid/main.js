@@ -15,7 +15,7 @@ function getBitcoinInfo(verify) {
     .then(transport => {
       listen(log => console.log(log))
       const appBtc = new AppBtc(transport);
-      return appBtc.getWalletPublicKey({format:"44'/0'/0'/0/0", verify: verify}).then(r =>
+      return appBtc.getWalletPublicKey("44'/0'/0'/0/0",{verify: verify, format: "legacy"}).then(r =>
         transport
           .close()
           .catch(e => {})

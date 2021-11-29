@@ -33,7 +33,7 @@ document.body.addEventListener("click", async () => {
     $main.appendChild(h2);
 
     //Display the address on the Ledger device and ask to verify the address
-    await appBtc.getWalletPublicKey({format:"44'/0'/0'/0/0", verify: true});
+    await appBtc.getWalletPublicKey("44'/0'/0'/0/0", {format:"legacy", verify: true});
   } catch (e) {
 
     //Catch any error thrown and displays it on the screen
