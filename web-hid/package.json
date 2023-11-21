@@ -1,22 +1,30 @@
 {
-  "name": "tuto-developper-portal",
+  "name": "update-doc-web-hid-usb",
   "version": "1.0.0",
   "description": "",
   "source": "src/index.html",
-  "dependencies": {
-    "@ledgerhq/hw-app-btc": "^6.12.1",
-    "@ledgerhq/hw-transport-webhid": "^6.11.2",
-    "@ledgerhq/hw-transport-webusb": "^6.11.2",
-    "@ledgerhq/logs": "^6.10.0",
-    "babel-polyfill": "^6.26.0",
-    "parcel": "^2.0.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build",
     "start": "parcel"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@ledgerhq/hw-app-btc": "^10.0.9",
+    "@ledgerhq/hw-app-eth": "^6.34.9",
+    "@ledgerhq/hw-transport-webhid": "^6.24.1",
+    "@ledgerhq/logs": "^6.10.0",
+    "core-js": "^3.33.3"
+  },
+  "devDependencies": {
+    "@types/core-js": "^2.5.8",
+    "buffer": "^6.0.3",
+    "parcel": "^2.0.3",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0"
+  },
+  "alias": {
+    "@ledgerhq/devices": "@ledgerhq/devices/lib-es"
+  }
 }
