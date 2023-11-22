@@ -1,26 +1,23 @@
 {
-  "private": true,
-  "name": "@ledgerhq/example-node",
-  "version": "4.36.0",
-  "main": "index.js",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "@ledgerhq/hw-app-btc": "^4.38.6",
-    "@ledgerhq/hw-transport-node-hid": "^4.38.6",
-    "@ledgerhq/logs": "^6.10.0",
-    "babel-polyfill": "^6.26.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-flow": "^6.23.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "flow-bin": "^0.92.1"
-  },
+  "name": "examples-node-electron-hid",
+  "version": "1.0.0",
+  "description": "",
+  "source": "index.html",
   "scripts": {
-    "start": "node lib/index.js",
-    "clean": "rm -rf lib",
-    "build": "babel --source-maps -d lib src",
-    "watch": "babel --watch --source-maps -d lib src"
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^16.0.10"
+  },
+  "dependencies": {
+    "@ledgerhq/hw-app-btc": "^6.24.1",
+    "@ledgerhq/hw-transport-node-hid": "^6.24.1",
+    "@ledgerhq/logs": "^6.10.0",
+    "babel-polyfill": "^6.26.0",
+    "browserify": "^17.0.0",
+    "node-polyfill-webpack-plugin": "^1.1.4",
+    "stream": "^0.0.2"
   }
 }
