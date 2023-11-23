@@ -14,7 +14,7 @@ function getBitcoinInfo(verify) {
   return TransportNodeHid.open("")
     .then(transport => {
       listen(log => console.log(log))
-      const appBtc = new AppBtc(transport);
+      const appBtc = new AppBtc({ transport, currency: "bitcoin" });
       return appBtc.getWalletPublicKey("44'/0'/0'/0/0",{verify: verify, format: "legacy"}).then(r =>
         transport
           .close()
