@@ -1,4 +1,4 @@
-import "babel-polyfill";
+import 'core-js/actual';
 import { listen } from "@ledgerhq/logs";
 import AppBtc from "@ledgerhq/hw-app-btc";
 import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
@@ -20,7 +20,7 @@ document.body.addEventListener("click", async () => {
     listen(log => console.log(log))
 
     //When the Ledger connected it is trying to display the bitcoin address
-    const appBtc = new AppBtc(transport);
+    const appBtc = new AppBtc({ transport, currency: "bitcoin" });
     const { bitcoinAddress } = await appBtc.getWalletPublicKey(
       "44'/0'/0'/0/0",
       { verify: false, format: "legacy"}
