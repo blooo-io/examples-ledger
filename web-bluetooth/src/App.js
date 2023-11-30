@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import eip55 from "eip55";
-import TransportWebBLE from "@ledgerhq/hw-transport-web-ble";
+import BluetoothTransport from "@ledgerhq/hw-transport-web-ble";
 import AppEth from "@ledgerhq/hw-app-eth";
 import QRCode from "./QRCode";
 import "./App.css";
@@ -13,7 +13,7 @@ class DeviceSelectionScreen extends Component {
   };
 
   createBLE = async () => {
-    const transport = await TransportWebBLE.create();
+    const transport = await BluetoothTransport.create();
     this.props.onSelectDevice(transport);
   };
 
