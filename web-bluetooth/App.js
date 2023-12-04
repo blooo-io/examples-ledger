@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import eip55 from "eip55";
 import BluetoothTransport from "@ledgerhq/hw-transport-web-ble";
 import AppEth from "@ledgerhq/hw-app-eth";
-import QRCode from "./QRCode";
-import "./App.css";
+// import QRCode from "./QRCode";
 
 const delay = ms => new Promise(success => setTimeout(success, ms));
 
@@ -85,7 +84,7 @@ class ShowAddressScreen extends Component {
         ) : (
           <>
             <strong>Ledger Live Ethereum Account 1</strong>
-            <QRCode data={address} size={300} />
+            {/* <QRCode data={address} size={300} /> */}
             <strong>{address}</strong>
           </>
         )}
