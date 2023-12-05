@@ -1,4 +1,4 @@
-####Node HID integration
+#### Node HID integration
 
 The current walkthrough is suitable for a correct implementation
 
@@ -12,7 +12,7 @@ Regarding the package.json file, the dependecies must be upgraded to the latest 
 
 
 
-####Web USB and Web HID
+#### Web USB and Web HID
 
 The current walkthrough is suitable for a correct implementation
 
@@ -26,7 +26,7 @@ Regarding the package.json file, the dependecies must be upgraded to the latest 
 
 
 
-####Web Bluetooth
+#### Web Bluetooth
 
 Using Next.js. Functional with Node.js version 18.18.2 and 20.9.0
 
@@ -34,7 +34,7 @@ Command to run: `npm run dev`
 
 
 
-####Transfer of Sol between accounts
+#### Transfer of Sol between accounts
 
 The current walkthrough is suitable for a correct implementation
 
@@ -42,7 +42,7 @@ Functional with Node.js version 20.9.0
 
 
 
-####Transfer of ether between accounts
+#### Transfer of Ether between accounts
 
 Functional with Node.js version 20.9.0
 
