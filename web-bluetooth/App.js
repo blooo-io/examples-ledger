@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import eip55 from "eip55";
 import BluetoothTransport from "@ledgerhq/hw-transport-web-ble";
 import AppEth from "@ledgerhq/hw-app-eth";
-import QRCode from "./QRCode";
-import "./App.css";
+import styles from './styles/Home.module.css';
+
 
 const delay = ms => new Promise(success => setTimeout(success, ms));
 
@@ -19,7 +19,7 @@ class DeviceSelectionScreen extends Component {
 
   render() {
     return (
-      <div className="DeviceSelectionScreen">
+      <div className={styles.DeviceSelectionScreen}>
         <p>
           Power up your Ledger Nano X and enter your pin before continuing...
         </p>
@@ -70,12 +70,12 @@ class ShowAddressScreen extends Component {
     const { address, error } = this.state;
 
     return (
-      <div className="ShowAddressScreen">
+      <div className={styles.ShowAddressScreen}>
         {!address ? (
           <>
-            <p className="loading">Loading your Ethereum address...</p>
+            <p className={styles.loading}>Loading your Ethereum address...</p>
             {error ? (
-              <p className="error">
+              <p className={styles.error}>
                 A problem occurred, make sure to open the Ethereum application
                 on your Ledger Nano X. (
                 {String((error && error.message) || error)})
@@ -85,7 +85,6 @@ class ShowAddressScreen extends Component {
         ) : (
           <>
             <strong>Ledger Live Ethereum Account 1</strong>
-            <QRCode data={address} size={300} />
             <strong>{address}</strong>
           </>
         )}
@@ -110,7 +109,7 @@ class App extends Component {
   render() {
     const { transport } = this.state;
     return (
-      <div className="App">
+      <div className={styles.App}>
         {!transport ? (
           <DeviceSelectionScreen onSelectDevice={this.onSelectDevice} />
         ) : (

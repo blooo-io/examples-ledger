@@ -1,49 +1,19 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
+  },
   "dependencies": {
-    "@craco/craco": "^7.1.0",
     "@ledgerhq/hw-app-eth": "^6.34.9",
     "@ledgerhq/hw-transport-web-ble": "^6.27.20",
-    "@testing-library/jest-dom": "^6.1.4",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.1",
-    "@types/web-bluetooth": "^0.0.20",
-    "buffer": "^6.0.3",
     "eip55": "^2.1.1",
-    "https-browserify": "^1.0.0",
-    "qrcode": "^1.5.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "stream-http": "^3.2.0",
-    "symbol-observable": "^4.0.0",
-    "url": "^0.11.3",
-    "web-vitals": "^3.5.0"
+    "next": "latest",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "engines": {
+    "node": ">=18"
   }
 }
