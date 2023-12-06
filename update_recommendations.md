@@ -52,3 +52,17 @@ Added 'import ledgerservice' in index.js
 
 In the package.json file: ether version @ 5.4.7 --> Run the following command when installing the packages:
 `npm install --save ethers@5.4.7`
+
+
+#### Sign a personal message
+
+The current walkthrough is suitable for a correct implementation
+
+Functional with Node.js version 20.9.0
+
+For the last step "Verify on runkit.com", change the code to run with the following:
+```
+const { ethers } = require("ethers");
+ethers.verifyMessage("test", "0xefb42c22baa0143b322e93b24b0903a0ef47a64b716fbb77debbea55a93dec3e4417aff7dce845723240916c6e34cf17c674828b3addfb0afad966334df5b6311b");
+```
+
