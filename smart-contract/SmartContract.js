@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import getBlockchain from './ethereum.js';
 import { ethers } from 'ethers';
+import { ledgerService } from '@ledgerhq/hw-app-eth'
  
 function SmartContract({eth,address}) {
   const [simpleStorage, setSimpleStorage] = useState(undefined);
@@ -33,12 +34,22 @@ function SmartContract({eth,address}) {
       data: data,
     }
     console.log(unsignedTx);
+
+    const defaultLoadConfig = {
+      nftExplorerBaseURL: "https://nft.api.live.ledger.com/v1/ethereum",
+      pluginBaseURL: "https://cdn.live.ledger.com",
+      extraPlugins: null,
+      cryptoassetsBaseURL: "https://cdn.live.ledger.com/cryptoassets"
+    };
+
     const serializedTx = ethers.utils.serializeTransaction(unsignedTx).slice(2);
+    const resolution = await ledgerService.resolveTransaction(serializedTx, defaultLoadConfig, {});
  
     console.log(serializedTx);
     const signature = await eth.signTransaction(
       "44'/60'/0'/0/0",
-      serializedTx
+      serializedTx,
+      resolution
     );
  
     console.log(signature);
