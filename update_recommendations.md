@@ -66,3 +66,14 @@ const { ethers } = require("ethers");
 ethers.verifyMessage("test", "0xefb42c22baa0143b322e93b24b0903a0ef47a64b716fbb77debbea55a93dec3e4417aff7dce845723240916c6e34cf17c674828b3addfb0afad966334df5b6311b");
 ```
 
+#### Call a smart contract
+
+Using Next.js. Functional with Node.js version 20.9.0
+
+Command to run: `npm run dev`
+
+Uses the Goerli network (see changes made in index.js file)
+
+Added 'import ledgerservice' in index.js
+
+New smart contract used: cf. ethereum.js file
