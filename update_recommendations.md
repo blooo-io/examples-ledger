@@ -74,6 +74,6 @@ Command to run: `npm run dev`
 
 Uses the Goerli network (see changes made in index.js file)
 
-Added 'import ledgerservice' in index.js
+Added 'import ledgerservice' in SmartContract.js
 
 New smart contract used: cf. ethereum.js file
