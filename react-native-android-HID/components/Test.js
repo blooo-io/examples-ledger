@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { listen } from '@ledgerhq/logs'
 
-import TransportHID from '@ledgerhq/react-native-hid';
-import Eth from "@ledgerhq/hw-app-eth";
+import TransportHID from '@ledgerhq/react-native-hid/lib';
+import AppEth from "@ledgerhq/hw-app-eth";
 
 export default function Test() {
 
@@ -14,7 +14,7 @@ export default function Test() {
         try {
             const transport = await TransportHID.create();
             listen(log => console.log(log));
-            const eth = new Eth(transport);
+            const eth = new AppEth(transport);
             const path = "44'/60'/0'/0/0"; // HD derivation path
             const { address } = await eth.getAddress(path, false);
             this.setState({ transport: address });
