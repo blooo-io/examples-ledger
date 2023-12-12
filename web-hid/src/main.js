@@ -1,10 +1,6 @@
 import 'core-js/actual';
 import { listen } from "@ledgerhq/logs";
 import AppBtc from "@ledgerhq/hw-app-btc";
-
-// Keep this import if you want to use a Ledger Nano S/X/S Plus with the USB protocol and delete the @ledgerhq/hw-transport-webhid import
-// import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
-// Keep this import if you want to use a Ledger Nano S/X/S Plus with the HID protocol and delete the @ledgerhq/hw-transport-webusb import
 import TransportWebHID from "@ledgerhq/hw-transport-webhid";
 
 //Display the header in the div which has the ID "main"
@@ -12,14 +8,12 @@ const initial = "<h1>Connect your Nano and open the Bitcoin app. Click anywhere 
 const $main = document.getElementById("main");
 $main.innerHTML = initial;
 
+
 document.body.addEventListener("click", async () => {
   $main.innerHTML = initial;
   try {
 
-    // Keep if you chose the USB protocol
-    // const transport = await TransportWebUSB.create();
-
-    // Keep if you chose the HID protocol
+    //trying to connect to your Ledger device with HID protocol
     const transport = await TransportWebHID.create();
 
     //listen to the events which are sent by the Ledger packages in order to debug the app
