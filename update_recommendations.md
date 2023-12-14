@@ -102,8 +102,12 @@ npx react-native@latest init myApp
 cd myApp
 ```
 Code implementation part:
+
 Add the `babel.config.js` file in the code implementation
+
 Dependencies installation: currently written `npm install --save @ledgerhq/hw-transport-webusb`
 Change for the following: `npm install --save @ledgerhq/react-native-hid`
+
 Add the following command: `npm install --save-dev babel-plugin-module-resolver`
+
 Rxjs is not used
