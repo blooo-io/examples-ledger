@@ -77,3 +77,37 @@ Uses the Goerli network (see changes made in index.js file)
 Added 'import ledgerservice' in SmartContract.js
 
 New smart contract used: cf. ethereum.js file
+
+
+#### React Native Android HID
+
+Functional with Node.js version 20.9.0 using React Native 0.73.0 and React 18.2.0
+
+Android Studio prerequisites (cf. [React Native doc](https://reactnative.dev/docs/environment-setup?os=macos&platform=android&guide=native&package-manager=npm#android-sdk)):
+- Android 13 Tiramisu
+- Android SDK Platform 33
+- Intel x86 Atom_64 System Image or Google APIs Intel x86 Atom System Image or (for Apple M1 Silicon) Google APIs ARM 64 v8a System Image
+- Android SDK Build-tools 33.0.0
+- Install Java JRE and JDK: `brew install --cask zulu17`
+- Set the environment variables:
+```
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+```
+Remove the install React Native command line.
+Instead, in the Project Initialization part, run:
+```
+npx react-native@latest init myApp
+cd myApp
+```
+Code implementation part:
+
+Add the `babel.config.js` file in the code implementation
+
+Dependencies installation: currently written `npm install --save @ledgerhq/hw-transport-webusb`
+Change for the following: `npm install --save @ledgerhq/react-native-hid`
+
+Add the following command: `npm install --save-dev babel-plugin-module-resolver`
+
+Rxjs is not used
