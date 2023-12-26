@@ -13,20 +13,20 @@ import { Observable } from "rxjs";
 import TransportBLE from "@ledgerhq/react-native-hw-transport-ble";
 // import QRCode from "react-native-qrcode-svg";
 import DeviceItem from "./DeviceItem";
-
+ 
 const deviceAddition = device => ({ devices }) => ({
   devices: devices.some(i => i.id === device.id)
     ? devices
     : devices.concat(device)
 });
-
+ 
 class DeviceSelectionScreen extends Component {
   state = {
     devices: [],
     error: null,
     refreshing: false
   };
-
+ 
   async componentDidMount() {
     // NB: this is the bare minimal. We recommend to implement a screen to explain to user.
     if (Platform.OS === "android") {
@@ -35,25 +35,22 @@ class DeviceSelectionScreen extends Component {
       );
     }
     let previousAvailable = false;
-    
-    
-
-    // new Observable(TransportBLE.observeState).subscribe(e => {
-    //   if (e.available !== previousAvailable) {
-    //     previousAvailable = e.available;
-    //     if (e.available) {
-    //       this.reload();
-    //     }
-    //   }
-    // });
-
+    new Observable(TransportBLE.observeState).subscribe(e => {
+      if (e.available !== previousAvailable) {
+        previousAvailable = e.available;
+        if (e.available) {
+          this.reload();
+        }
+      }
+    });
+ 
     this.startScan();
   }
-
+ 
   componentWillUnmount() {
     if (this.sub) this.sub.unsubscribe();
   }
-
+ 
   startScan = async () => {
     this.setState({ refreshing: true });
     this.sub = new Observable(TransportBLE.listen).subscribe({
@@ -71,7 +68,7 @@ class DeviceSelectionScreen extends Component {
       }
     });
   };
-
+ 
   reload = async () => {
     if (this.sub) this.sub.unsubscribe();
     this.setState(
@@ -79,9 +76,9 @@ class DeviceSelectionScreen extends Component {
       this.startScan
     );
   };
-
+ 
   keyExtractor = (item: *) => item.id;
-
+ 
   onSelectDevice = async device => {
     try {
       await this.props.onSelectDevice(device);
@@ -89,11 +86,11 @@ class DeviceSelectionScreen extends Component {
       this.setState({ error });
     }
   };
-
+ 
   renderItem = ({ item }: { item: * }) => {
     return <DeviceItem device={item} onSelect={this.onSelectDevice} />;
   };
-
+ 
   ListHeader = () => {
     const { error } = this.state;
     return error ? (
@@ -110,10 +107,10 @@ class DeviceSelectionScreen extends Component {
       </View>
     );
   };
-
+ 
   render() {
     const { devices, error, refreshing } = this.state;
-
+ 
     return (
       <FlatList
         extraData={error}
@@ -128,9 +125,9 @@ class DeviceSelectionScreen extends Component {
     );
   }
 }
-
+ 
 export default DeviceSelectionScreen;
-
+ 
 const styles = StyleSheet.create({
   header: {
     paddingTop: 80,

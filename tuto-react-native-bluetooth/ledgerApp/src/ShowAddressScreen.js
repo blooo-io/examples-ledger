@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
-
+ 
 import AppEth from "@ledgerhq/hw-app-eth";
 import TransportBLE from "@ledgerhq/react-native-hw-transport-ble";
-// import QRCode from "react-native-qrcode-svg";
-
+import QRCode from "react-native-qrcode-svg";
+ 
 const delay = ms => new Promise(success => setTimeout(success, ms));
-
+ 
 class ShowAddressScreen extends Component {
   state = {
     error: null,
     address: null
   };
-
+ 
   async componentDidMount() {
     while (!this.state.address) {
       if (this.unmounted) return;
@@ -21,11 +21,11 @@ class ShowAddressScreen extends Component {
     }
     await this.fetchAddress(true);
   }
-
+ 
   async componentWillUnmount() {
     this.unmounted = true;
   }
-
+ 
   fetchAddress = async verify => {
     const { transport } = this.props;
     try {
@@ -41,10 +41,10 @@ class ShowAddressScreen extends Component {
       return null;
     }
   };
-
+ 
   render() {
     const { address, error } = this.state;
-
+ 
     return (
       <View style={styles.ShowAddressScreen}>
         {!address ? (
@@ -69,9 +69,9 @@ class ShowAddressScreen extends Component {
     );
   }
 }
-
+ 
 export default ShowAddressScreen;
-
+ 
 const styles = StyleSheet.create({
   ShowAddressScreen: {
     flex: 1,
