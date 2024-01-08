@@ -27,9 +27,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "react-native-ble-plx"
-    ]
+    }
+    // ,
+    // "plugins": [
+    //   "react-native-ble-plx"
+    // ]
   }
 }
