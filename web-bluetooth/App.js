@@ -3,6 +3,7 @@ import eip55 from "eip55";
 import BluetoothTransport from "@ledgerhq/hw-transport-web-ble";
 import AppEth from "@ledgerhq/hw-app-eth";
 import styles from './styles/Home.module.css';
+import QRCode from "qrcode";
 
 
 const delay = ms => new Promise(success => setTimeout(success, ms));
@@ -42,6 +43,7 @@ class ShowAddressScreen extends Component {
       await delay(500);
     }
     this.fetchAddress(true);
+    this.generateQRCode();
   }
 
   async componentWillUnmount() {
@@ -66,6 +68,16 @@ class ShowAddressScreen extends Component {
     }
   };
 
+  async generateQRCode() {
+    try {
+      const response = await QRCode.toCanvas(this.state.address)
+      document.getElementById("qrcode").appendChild(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  
   render() {
     const { address, error } = this.state;
 
@@ -86,6 +98,7 @@ class ShowAddressScreen extends Component {
           <>
             <strong>Ledger Live Ethereum Account 1</strong>
             <strong>{address}</strong>
+            <div id="qrcode"></div>
           </>
         )}
       </div>

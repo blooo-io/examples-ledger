@@ -10,6 +10,7 @@
     "@ledgerhq/hw-transport-web-ble": "^6.27.20",
     "eip55": "^2.1.1",
     "next": "latest",
+    "qrcode": "^1.5.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
