@@ -139,8 +139,11 @@ touch ShowAddressScreen.js
 touch tsconfig.json
 ```
 Copy the App.js file
+
 Index.js file doesn't exist anymore. Import the polyfill in App.js
+
 DeviceSelectionScreen.js: Copy the file (added lines for Android permissions requests)
+
 Add the babel.config.js file in code implementation
 
 Update the folder view since there is no "src" file anymore
@@ -175,9 +178,11 @@ The rest of the walkthrough is suitable for a correct implementation
 Functional with Node.js version 20.9.0 using Expo 49.0.15
 
 Prerequisites:
+
 Java JRE and JDK: Install Java JRE and JDK: `brew install --cask zulu17`
 
 Mobile app build part:
+
 Install Java JRE and JDK: `brew install --cask zulu17`
 
 Projet initialization + Code implementation + Dependencies installation: cf. above in the React Native Bluetooth on Android part
@@ -185,6 +190,7 @@ Projet initialization + Code implementation + Dependencies installation: cf. abo
 Remove the Pod installation part
 
 Mobile app test:
+
 Application build on XCode is not needed.
 Instead run:
 ```
