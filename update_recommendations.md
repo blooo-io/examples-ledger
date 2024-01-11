@@ -185,7 +185,7 @@ Projet initialization + Code implementation + Dependencies installation: cf. abo
 Remove the Pod installation part
 
 Mobile app test:
-Application build on XCode is not needed
+Application build on XCode is not needed.
 Instead run:
 ```
 npx expo prebuild
