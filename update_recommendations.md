@@ -111,3 +111,86 @@ Change for the following: `npm install --save @ledgerhq/react-native-hid`
 Add the following command: `npm install --save-dev babel-plugin-module-resolver`
 
 Rxjs is not used
+
+Install the app on device: instead of `npm run android`, run `npm run android --mode="release"`
+
+
+#### React Native Bluetooth on Android
+
+Functional with Node.js version 20.9.0 using Expo 49.0.15
+
+Prerequisites + Android development prerequisites: cf. above in React Native Android HID recommendations
+
+Mobile app build:
+
+For project initialization, run the following:
+```
+npx create-expo-app ledgerApp
+cd ledgerApp
+```
+Code implementation part:
+
+Run:
+```
+touch polyfill.js
+touch DeviceItem.js
+touch DeviceSelectionScreen.js
+touch ShowAddressScreen.js
+touch tsconfig.json
+```
+Copy the App.js file
+Index.js file doesn't exist anymore. Import the polyfill in App.js
+DeviceSelectionScreen.js: Copy the file (added lines for Android permissions requests)
+Add the babel.config.js file in code implementation
+
+Update the folder view since there is no "src" file anymore
+
+Dependencies installation:
+
+Specific versions for the following:
+```
+npx expo install react-native-svg@13.2.0
+npx expo install react-native-ble-plx@2.0.3
+```
+Add:
+```
+npx expo install babel-plugin-module-resolver
+npx expo install @react-native-anywhere/polyfill-base64
+```
+Remove the line `npx react-native link react-native-ble-plx`
+
+Remove the Build Gradle modification
+
+Start the development server:
+Run:
+```
+npx expo prebuild
+npx expo run:android -d
+```
+The rest of the walkthrough is suitable for a correct implementation
+
+
+#### React Native Bluetooth on iOS
+
+Functional with Node.js version 20.9.0 using Expo 49.0.15
+
+Prerequisites:
+Java JRE and JDK: Install Java JRE and JDK: `brew install --cask zulu17`
+
+Mobile app build part:
+Install Java JRE and JDK: `brew install --cask zulu17`
+
+Projet initialization + Code implementation + Dependencies installation: cf. above in the React Native Bluetooth on Android part
+
+Remove the Pod installation part
+
+Mobile app test:
+Application build on XCode is not needed
+Instead run:
+```
+npx expo prebuild
+npx expo run:ios -d
+```
+The rest of the walkthrough is suitable for a correct implementation
+
+*NB: The folder named "tuto-react-native-bluetooth" is suitable for both Android and iOS development*
