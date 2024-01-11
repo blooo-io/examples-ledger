@@ -3,36 +3,35 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   FlatList,
   Platform,
   PermissionsAndroid
 } from "react-native";
 import { Observable } from "rxjs";
-import AppEth from "@ledgerhq/hw-app-eth";
 import TransportBLE from "@ledgerhq/react-native-hw-transport-ble";
-// import QRCode from "react-native-qrcode-svg";
 import DeviceItem from "./DeviceItem";
- 
+
 const deviceAddition = device => ({ devices }) => ({
   devices: devices.some(i => i.id === device.id)
     ? devices
     : devices.concat(device)
 });
- 
-const DeviceSelectionScreen = () =>  {
+
+class DeviceSelectionScreen extends Component {
   state = {
     devices: [],
     error: null,
     refreshing: false
   };
- 
-  componentDidMount = async () => {
+
+  async componentDidMount() {
     // NB: this is the bare minimal. We recommend to implement a screen to explain to user.
     if (Platform.OS === "android") {
-      await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION
-      );
+      await PermissionsAndroid.requestMultiple([
+        PermissionsAndroid.PERMISSIONS.BLUETOOTH_SCAN,
+        PermissionsAndroid.PERMISSIONS.BLUETOOTH_CONNECT,
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+      ]);
     }
     let previousAvailable = false;
     new Observable(TransportBLE.observeState).subscribe(e => {
@@ -43,14 +42,14 @@ const DeviceSelectionScreen = () =>  {
         }
       }
     });
- 
+
     this.startScan();
   }
- 
-  componentWillUnmount = () => {
+
+  componentWillUnmount() {
     if (this.sub) this.sub.unsubscribe();
   }
- 
+
   startScan = async () => {
     this.setState({ refreshing: true });
     this.sub = new Observable(TransportBLE.listen).subscribe({
@@ -68,7 +67,7 @@ const DeviceSelectionScreen = () =>  {
       }
     });
   };
- 
+
   reload = async () => {
     if (this.sub) this.sub.unsubscribe();
     this.setState(
@@ -76,9 +75,9 @@ const DeviceSelectionScreen = () =>  {
       this.startScan
     );
   };
- 
-  keyExtractor = (item: *) => item.id;
- 
+
+  keyExtractor = item => item.id;
+
   onSelectDevice = async device => {
     try {
       await this.props.onSelectDevice(device);
@@ -86,11 +85,11 @@ const DeviceSelectionScreen = () =>  {
       this.setState({ error });
     }
   };
- 
-  renderItem = ({ item }: { item: * }) => {
+
+  renderItem = ({ item }) => {
     return <DeviceItem device={item} onSelect={this.onSelectDevice} />;
   };
- 
+
   ListHeader = () => {
     const { error } = this.state;
     return error ? (
@@ -107,10 +106,10 @@ const DeviceSelectionScreen = () =>  {
       </View>
     );
   };
- 
-  render() ;{
+
+  render() {
     const { devices, error, refreshing } = this.state;
- 
+
     return (
       <FlatList
         extraData={error}
@@ -125,9 +124,9 @@ const DeviceSelectionScreen = () =>  {
     );
   }
 }
- 
+
 export default DeviceSelectionScreen;
- 
+
 const styles = StyleSheet.create({
   header: {
     paddingTop: 80,

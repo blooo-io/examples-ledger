@@ -5,8 +5,8 @@ import {
   StyleSheet,
   ActivityIndicator
 } from "react-native";
- 
-const DeviceItem = () => {
+
+class DeviceItem extends Component {
   state = {
     pending: false
   };
@@ -18,8 +18,8 @@ const DeviceItem = () => {
       this.setState({ pending: false });
     }
   };
- 
-  render() ;{
+
+  render() {
     const { device } = this.props;
     const { pending } = this.state;
     return (
@@ -35,7 +35,7 @@ const DeviceItem = () => {
   }
 }
 export default DeviceItem;
- 
+
 const styles = StyleSheet.create({
   deviceItem: {
     paddingVertical: 16,

@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
- 
+
 import AppEth from "@ledgerhq/hw-app-eth";
-import TransportBLE from "@ledgerhq/react-native-hw-transport-ble";
-// import QRCode from "react-native-qrcode-svg";
- 
+import QRCode from "react-native-qrcode-svg";
+
 const delay = ms => new Promise(success => setTimeout(success, ms));
- 
-const ShowAddressScreen = () => {
+
+class ShowAddressScreen extends Component {
   state = {
     error: null,
     address: null
   };
- 
-  componentDidMount = async () => {
+
+  async componentDidMount() {
     while (!this.state.address) {
       if (this.unmounted) return;
       await this.fetchAddress(false);
       await delay(500);
     }
-    await this.fetchAddress(true);
+    // await this.fetchAddress(true);
   }
- 
-  componentWillUnmount = async () => {
+
+  async componentWillUnmount() {
     this.unmounted = true;
   }
- 
+
   fetchAddress = async verify => {
     const { transport } = this.props;
     try {
@@ -41,10 +40,10 @@ const ShowAddressScreen = () => {
       return null;
     }
   };
- 
-  render() ;{
+
+  render() {
     const { address, error } = this.state;
- 
+
     return (
       <View style={styles.ShowAddressScreen}>
         {!address ? (
@@ -61,7 +60,7 @@ const ShowAddressScreen = () => {
         ) : (
           <>
             <Text style={styles.title}>Ledger Live Ethereum Account 1</Text>
-            {/* <QRCode value={address} size={300} /> */}
+            <QRCode value={address} size={300} />
             <Text style={styles.address}>{address}</Text>
           </>
         )}
@@ -69,9 +68,9 @@ const ShowAddressScreen = () => {
     );
   }
 }
- 
+
 export default ShowAddressScreen;
- 
+
 const styles = StyleSheet.create({
   ShowAddressScreen: {
     flex: 1,
